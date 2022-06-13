@@ -25,6 +25,8 @@ namespace Texteditor
         public MainWindow()
         {
             InitializeComponent();
+            cmbFontFamily.ItemsSource = Fonts.SystemFontFamilies.OrderBy(f => f.Source); //hier geben wir Combobox die Einträge
+            cmbFontsize.ItemsSource = new List<double>() { 8,9,10,11,12,14,16,18,20,22,24,26,28,36,48,72}; //geben die default Größen ein
         }
 
         private void Open_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -44,11 +46,15 @@ namespace Texteditor
             object temp = rtbEditor.Selection.GetPropertyValue(Inline.FontWeightProperty); //"Weight" entspricht "bold"
             btnBold.IsChecked = (temp != DependencyProperty.UnsetValue) && temp.Equals(FontWeights.Bold); //brauchen das, damit ein Programm erkennt, ob in Selection etw bold usw ist
 
-            object temp1 = rtbEditor.Selection.GetPropertyValue(Inline.FontStyleProperty); //"Style" entspricht "italic"
-            btnBold.IsChecked = (temp1 != DependencyProperty.UnsetValue) && temp.Equals(FontWeights.Bold);
+            temp = rtbEditor.Selection.GetPropertyValue(Inline.FontStyleProperty); 
+            btnItalic.IsChecked = (temp != DependencyProperty.UnsetValue) && temp.Equals(FontStyles.Italic); //"Style" entspricht "italic"
 
-            object temp2 = rtbEditor.Selection.GetPropertyValue(Inline.FontDecorationProperty); //"Style" entspricht "bold"
-            btnBold.IsChecked = (temp2 != DependencyProperty.UnsetValue) && temp.Equals(FontWeights.Bold);
+            temp = rtbEditor.Selection.GetPropertyValue(Inline.TextDecorationsProperty); //"Style" entspricht "bold"
+            btnUnderline.IsChecked = (temp != DependencyProperty.UnsetValue) && temp.Equals(TextDecorations.Underline);
+
+
+            temp = rtbEditor.Selection.GetPropertyValue(Inline.FontFamilyProperty); //Schrift aendern
+            cmbFontFamily.SelectedItem = temp; //setzen ausgewaehlte Wert in Zeile
         }
 
         private void Save_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -62,5 +68,22 @@ namespace Texteditor
                 range.Save(fs, DataFormats.Rtf);
             }
         }
+
+        private void cmbFontFamily_SelectionChanged(object sender, SelectionChangedEventArgs e) //die Methode für Schriften
+        {
+            if (cmbFontFamily.SelectedItem != null) //wenn etwas ausgewählt ist 
+            {
+                rtbEditor.Selection.ApplyPropertyValue(Inline.FontFamilyProperty, cmbFontFamily.SelectedItem);
+            }
+        }
+
+        private void cmbFontsize_TextChanged(object sender, SelectionChangedEventArgs e) //die Methode für Groesse
+        {
+            //if (cmbFontsize.SelectedItem != null) //wenn etwas ausgewählt ist 
+            //{
+            //    rtbEditor.Selection.ApplyPropertyValue(Inline.FontsizeProperty, cmbFontFamily.SelectedItem);
+            //}
+        }
+        
     }
 }

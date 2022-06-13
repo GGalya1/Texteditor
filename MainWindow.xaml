@@ -29,6 +29,13 @@
             <ToggleButton Command="EditingCommands.ToggleItalic" x:Name="btnItalic">
                 <Image Source="/icons/italics.png" Width="16" Height="16"></Image>
             </ToggleButton>
+            <ToggleButton Command="EditingCommands.ToggleUnderline" x:Name="btnUnderline">
+                <Image Source="/icons/underline.png" Width="16" Height="16"></Image>
+            </ToggleButton>
+            <Separator></Separator>   <!-- einfach um zu trennen -->
+
+            <ComboBox x:Name="cmbFontFamily" Width="150" SelectionChanged="cmbFontFamily_SelectionChanged"></ComboBox>
+            <ComboBox x:Name="cmbFontsize" Width="50" IsEditable="True" TextBoxBase.TextChanged="cmbFontsize_TextChanged"></ComboBox>
         </ToolBar>
         <RichTextBox x:Name="rtbEditor" SelectionChanged="rtbEditor_SelectionChanged"></RichTextBox>
     </DockPanel>

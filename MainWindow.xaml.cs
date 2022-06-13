@@ -77,7 +77,7 @@ namespace Texteditor
             }
         }
 
-        private void cmbFontsize_TextChanged(object sender, SelectionChangedEventArgs e) //die Methode für Groesse
+        private void cmbFontsize_TextChanged(object sender, RoutedEventArgs e) //die Methode für Groesse
         {
             //if (cmbFontsize.SelectedItem != null) //wenn etwas ausgewählt ist 
             //{

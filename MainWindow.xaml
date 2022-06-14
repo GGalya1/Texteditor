@@ -38,18 +38,18 @@
             <ComboBox x:Name="cmbFontsize" Width="50" IsEditable="True" TextBoxBase.TextChanged="cmbFontsize_TextChanged" PreviewTextInput="cmbFontsize_PreviewTextInput"></ComboBox>
             <Separator></Separator>   <!-- einfach um zu trennen -->
 
-            <ToggleButton Command="EditingCommands.AlignLeft">
+            <Button Command="EditingCommands.AlignLeft">
                 <Image Source="/icons/left-align.png" Height="16" Width="16"></Image>
-            </ToggleButton>
-            <ToggleButton Command="EditingCommands.AlignCenter">
+            </Button>
+            <Button Command="EditingCommands.AlignCenter">
                 <Image Source="/icons/center-align.png" Width="16" Height="16"></Image>
-            </ToggleButton>
-            <ToggleButton Command="EditingCommands.AlignRight">
+            </Button>
+            <Button Command="EditingCommands.AlignRight">
                 <Image Source="/icons/right-align.png" Width="16" Height="16"></Image>
-            </ToggleButton>
-            <ToggleButton Command="EditingCommands.AlignJustify">
+            </Button>
+            <Button Command="EditingCommands.AlignJustify">
                 <Image Source="/icons/block.png" Width="16" Height="16"></Image>
-            </ToggleButton>
+            </Button>
         </ToolBar>
         <RichTextBox x:Name="rtbEditor" SelectionChanged="rtbEditor_SelectionChanged"></RichTextBox>
     </DockPanel>

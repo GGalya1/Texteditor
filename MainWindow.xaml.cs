@@ -60,6 +60,10 @@ namespace Texteditor
 
             temp = rtbEditor.Selection.GetPropertyValue(Inline.FontSizeProperty); //Größe der Schriftes ändern
             cmbFontsize.Text = temp.ToString(); //setzen ausgewählte Wert in Zeile, wobei zu beachten ist, dass hier man .Text und .ToString() verwendet, weil wir keine bereite Werte haben
+
+            
+
+            //ToogleButton funktionieren nicht, gucken bei Aurelion im GitHub
         }
 
         private void Save_Executed(object sender, ExecutedRoutedEventArgs e)
